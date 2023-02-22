@@ -10,6 +10,8 @@ import (
 // converte un indirizzo ip x.x.x.x in un indirizzo uint32
 func getIP(IP string) (uint32, error) {
 
+	IP = strings.TrimSpace(IP)
+
 	addr := strings.Split(IP, ".")
 	if len(addr) != 4 {
 		return 0, errors.New("IP non valido")
@@ -40,6 +42,8 @@ func getIP(IP string) (uint32, error) {
 //	-x - taglia della rete
 func GetMask(Mask string) (uint32, error) {
 	var mask uint32
+
+	Mask = strings.TrimSpace(Mask)
 
 	if Mask[0] == '#' {
 		dim, err := strconv.Atoi(Mask[1:])
