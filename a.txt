@@ -1,72 +1,63 @@
 
-BaseAddres:	84.136.104.0/21
-BroadCast:	84.136.111.255
-Getaway:	84.136.111.254
-Primo IP:	84.136.104.1
-Ultimo IP:	84.136.111.253
-Net Mask:	255.255.248.0
-Wildcard:	0.0.7.255
-
-#388	--> x.x.x.x/23
-BaseAddres:	84.136.104.0/23
-BroadCast:	84.136.105.255
-Getaway:	84.136.105.254
-Primo IP:	84.136.104.1
-Ultimo IP:	84.136.105.253
-Net Mask:	255.255.254.0
-Wildcard:	0.0.1.255
-
-#64	--> x.x.x.x/26
-BaseAddres:	84.136.106.0/26
-BroadCast:	84.136.106.63
-Getaway:	84.136.106.62
-Primo IP:	84.136.106.1
-Ultimo IP:	84.136.106.61
-Net Mask:	255.255.255.192
-Wildcard:	0.0.0.63
-
-#55	--> x.x.x.x/26
-BaseAddres:	84.136.106.64/26
-BroadCast:	84.136.106.127
-Getaway:	84.136.106.126
-Primo IP:	84.136.106.65
-Ultimo IP:	84.136.106.125
-Net Mask:	255.255.255.192
-Wildcard:	0.0.0.63
-
-#119	--> x.x.x.x/25
-BaseAddres:	84.136.106.128/25
-BroadCast:	84.136.106.255
-Getaway:	84.136.106.254
-Primo IP:	84.136.106.129
-Ultimo IP:	84.136.106.253
-Net Mask:	255.255.255.128
-Wildcard:	0.0.0.127
-
-#129	--> x.x.x.x/24
-BaseAddres:	84.136.107.0/24
-BroadCast:	84.136.107.255
-Getaway:	84.136.107.254
-Primo IP:	84.136.107.1
-Ultimo IP:	84.136.107.253
+BaseAddres:	204.26.27.0/24
+BroadCast:	204.26.27.255
+Getaway:	204.26.27.254
+Primo IP:	204.26.27.1
+Ultimo IP:	204.26.27.253
 Net Mask:	255.255.255.0
 Wildcard:	0.0.0.255
 
-#188	--> x.x.x.x/24
-BaseAddres:	84.136.108.0/24
-BroadCast:	84.136.108.255
-Getaway:	84.136.108.254
-Primo IP:	84.136.108.1
-Ultimo IP:	84.136.108.253
-Net Mask:	255.255.255.0
-Wildcard:	0.0.0.255
+#9	--> x.x.x.x/28
+BaseAddres:	204.26.27.0/28
+BroadCast:	204.26.27.15
+Getaway:	204.26.27.14
+Primo IP:	204.26.27.1
+Ultimo IP:	204.26.27.13
+Net Mask:	255.255.255.240
+Wildcard:	0.0.0.15
 
-#324	--> x.x.x.x/23
-BaseAddres:	84.136.110.0/23
-BroadCast:	84.136.111.255
-Getaway:	84.136.111.254
-Primo IP:	84.136.110.1
-Ultimo IP:	84.136.111.253
-Net Mask:	255.255.254.0
-Wildcard:	0.0.1.255
+#8	--> x.x.x.x/29
+BaseAddres:	204.26.27.16/29
+BroadCast:	204.26.27.23
+Getaway:	204.26.27.22
+Primo IP:	204.26.27.17
+Ultimo IP:	204.26.27.21
+Net Mask:	255.255.255.248
+Wildcard:	0.0.0.7
+
+#63	--> x.x.x.x/26
+BaseAddres:	204.26.27.64/26
+BroadCast:	204.26.27.127
+Getaway:	204.26.27.126
+Primo IP:	204.26.27.65
+Ultimo IP:	204.26.27.125
+Net Mask:	255.255.255.192
+Wildcard:	0.0.0.63
+
+#28	--> x.x.x.x/27
+BaseAddres:	204.26.27.32/27
+BroadCast:	204.26.27.63
+Getaway:	204.26.27.62
+Primo IP:	204.26.27.33
+Ultimo IP:	204.26.27.61
+Net Mask:	255.255.255.224
+Wildcard:	0.0.0.31
+
+#63	--> x.x.x.x/26
+BaseAddres:	204.26.27.128/26
+BroadCast:	204.26.27.191
+Getaway:	204.26.27.190
+Primo IP:	204.26.27.129
+Ultimo IP:	204.26.27.189
+Net Mask:	255.255.255.192
+Wildcard:	0.0.0.63
+
+#48	--> x.x.x.x/26
+BaseAddres:	204.26.27.192/26
+BroadCast:	204.26.27.255
+Getaway:	204.26.27.254
+Primo IP:	204.26.27.193
+Ultimo IP:	204.26.27.253
+Net Mask:	255.255.255.192
+Wildcard:	0.0.0.63
 
