@@ -5,7 +5,10 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 )
+
+var rap string
 
 // converte un indirizzo ip x.x.x.x in un indirizzo uint32
 func getIP(IP string) (uint32, error) {
@@ -77,7 +80,37 @@ func toString(addr uint32) string {
 	add[2] = uint8(addr >> 16)
 	add[3] = uint8(addr >> 24)
 
-	return fmt.Sprintf("%d.%d.%d.%d", add[3], add[2], add[1], add[0])
+	if rap == "" {
+		randRap()
+	}
+
+	return fmt.Sprintf(rap, add[3], add[2], add[1], add[0])
+}
+
+func randRap() {
+
+	s := []string{
+		"%d.%d.%d.%d",
+		". %d.%d.%d.%d",
+		".. %d.%d.%d.%d",
+		"_%d.%d.%d.%d",
+		"_ %d.%d.%d.%d",
+		"- %d.%d.%d.%d",
+		"#%d.%d.%d.%d",
+		"# %d.%d.%d.%d",
+		"/%d.%d.%d.%d",
+		"/ %d.%d.%d.%d",
+		"\\%d.%d.%d.%d",
+		"\\ %d.%d.%d.%d",
+		"^%d.%d.%d.%d",
+		"^ %d.%d.%d.%d",
+		"*%d.%d.%d.%d",
+		"* %d.%d.%d.%d",
+		"|%d.%d.%d.%d",
+		"| %d.%d.%d.%d",
+	}
+
+	rap = s[time.Now().UnixMilli()%int64(len(s))]
 }
 
 // converte una maschera CIDR in una maschera di bit
