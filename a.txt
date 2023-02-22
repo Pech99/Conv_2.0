@@ -1,0 +1,45 @@
+10.100.20.0/27
+BaseAddres:	_ 10.100.20.0/27
+BroadCast:	_ 10.100.20.31
+Getaway:	_ 10.100.20.30
+Primo IP:	_ 10.100.20.1
+Ultimo IP:	_ 10.100.20.29
+Net Mask:	_ 255.255.255.224
+Wildcard:	_ 0.0.0.31
+
+10.100.20.32/26
+BaseAddres:	_ 10.100.20.0/26
+BroadCast:	_ 10.100.20.63
+Getaway:	_ 10.100.20.62
+Primo IP:	_ 10.100.20.1
+Ultimo IP:	_ 10.100.20.61
+Net Mask:	_ 255.255.255.192
+Wildcard:	_ 0.0.0.63
+
+10.100.20.64/24
+BaseAddres:	_ 10.100.20.0/24
+BroadCast:	_ 10.100.20.255
+Getaway:	_ 10.100.20.254
+Primo IP:	_ 10.100.20.1
+Ultimo IP:	_ 10.100.20.253
+Net Mask:	_ 255.255.255.0
+Wildcard:	_ 0.0.0.255
+
+10.100.21.0/25
+BaseAddres:	_ 10.100.21.0/25
+BroadCast:	_ 10.100.21.127
+Getaway:	_ 10.100.21.126
+Primo IP:	_ 10.100.21.1
+Ultimo IP:	_ 10.100.21.125
+Net Mask:	_ 255.255.255.128
+Wildcard:	_ 0.0.0.127
+
+10.100.21.128/30
+BaseAddres:	_ 10.100.21.128/30
+BroadCast:	_ 10.100.21.131
+Getaway:	-
+Primo IP:	_ 10.100.21.129
+Secondo IP:	_ 10.100.21.130
+Net Mask:	_ 255.255.255.252
+Wildcard:	_ 0.0.0.3
+
