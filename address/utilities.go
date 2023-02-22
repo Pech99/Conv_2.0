@@ -77,7 +77,7 @@ func toString(addr uint32) string {
 	add[2] = uint8(addr >> 16)
 	add[3] = uint8(addr >> 24)
 
-	return fmt.Sprintf("_ %d.%d.%d.%d", add[3], add[2], add[1], add[0])
+	return fmt.Sprintf("%d.%d.%d.%d", add[3], add[2], add[1], add[0])
 }
 
 // converte una maschera CIDR in una maschera di bit
