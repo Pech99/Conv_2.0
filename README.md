@@ -14,7 +14,7 @@ Al termine della suddivisione vengono restituiti i pool ancora liberi.
 
 <code>A.B.C.D/M</code> : è l'indirizzo IPv4 in notazione decimale puntata formato CIDR.
 <br><code>M</code> : Numero di bit destinati alla parte di netID (formato CIDR standard).
-<br><code>-M</code> : Numero di bit destinati alla parte host ID.
+<br><code>-M</code> : Numero di bit destinati alla parte hostID.
 <br><code>#M</code> : Numero di indirizzi minimo che la rete deve contenere (compreso il Getaway).
 
 #### Esempio di input:
