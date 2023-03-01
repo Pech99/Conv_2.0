@@ -3,7 +3,7 @@ package pool
 import (
 	"sort"
 
-	"github.com/Pech99/conv/address"
+	"github.com/Pech99/conv_2.0/address"
 )
 
 type AddrPool []address.InetAddress

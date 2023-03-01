@@ -5,8 +5,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Pech99/conv/address"
-	"github.com/Pech99/conv/pool"
+	"github.com/Pech99/conv_2.0/address"
+	"github.com/Pech99/conv_2.0/pool"
 )
 
 // complile: go build -ldflags "-H windowsgui"
