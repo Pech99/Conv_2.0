@@ -2,87 +2,78 @@ About Conv 2.0
 ==========
 
 ## Generale
-Questo programma effetua il subnetting di una rete.
-Tutte le informazioni necessarie al programma vengono passate tramite un file.
-La rete da dividere viene data in input in formato decimale puntato.
-Le dimensioni delle sottoreti da ricavare, vengono passate come maschere CIDR.
+Questo programma restituisce informazioni riguardo ad un indirizzo di rete ed opera il subnetting.
+Tutte le informazioni necessarie al programma vengono passate tramite un riga di comando dottoforma di argomenti.
+La rete di cui ottenere le informazioni e da dividere viene passata come primo argomento in fomrato CIDR (A.B.C.D/M).
+Mentre le maschere delle sottoreti da ricavare è possibile specificarle in 3 differenti formati.
 Le sottoreti vengono allineate e viene ottimizzato lo spazio riempiendo i pool di IP non ancora associati ad alcuna sottorete.
+Al termine della suddivisione vengono restituiti i pool ancora liberi.
 
 ### Comandi
-La prima riga del file contiene la rete in formato CIDR che si vuole partizionare:
-<p><code>X.X.X.X/Z</code></p>
-<p>
-    <code>X.X.X.X</code>: è l'indirizzo IPv4 in notazione decimale puntata.
-    <br><code>Z</code>: è la maschera CIDR rappresentabile in 3 differenti formati.
-</p>
-Nelle righe successive vengono indicate le dimensioni delle sottoreti da ricavare. l'ordine di scrittura determina l'ordine in cui verrà ricavato lo spazio di IP.
+<p><code>./conv A.B.C.D/M [M | -M | #M]...</code></p>
 
-### Formati delle maschere
-<code>Z</code>: Numero di bit destinati alla parte di net ID (formato CIDR standard)
-<br><code>-Z</code>: Numero di bit destinati alla parte host ID
-<br><code>#Z</code>: Nuemro di indirizzi massimo che deve contenere la rete (deve comprendere Base Address, Brodcast e Getaway)
+<code>A.B.C.D/M</code> : è l'indirizzo IPv4 in notazione decimale puntata formato CIDR.
+<br><code>M</code> : Numero di bit destinati alla parte di netID (formato CIDR standard).
+<br><code>-M</code> : Numero di bit destinati alla parte host ID.
+<br><code>#M</code> : Numero di indirizzi minimo che la rete deve contenere (compreso il Getaway).
 
-#### Esempio di file dato in input (prova.txt)
-```txt
-10.100.30.0/24
-#10
-27
--3
-#5
+#### Esempio di input:
 ```
-
-### Lanciare il programma
-Il programma viene lanciato  da terminale passando come argomento il nome e il path del file contenente le indicazioni della rete
-```cmd
-conv.exe prova.txt
+./conv 10.100.30.0/24 #10 #30 16 -3 30
 ```
+#### Esempio output:
+```
+Indirizzo Base della Rete (10.100.30.0/24)
+BaseAddres:     10.100.30.0/24
+BroadCast:      10.100.30.255
+Getaway:        10.100.30.254
+Primo IP:       10.100.30.1
+Ultimo IP:      10.100.30.253
+Net Mask:       255.255.255.0
+Wildcard:       0.0.0.255
 
-### Output del programma
-L'output avviene sul file <code>a.txt</code>. Il file conterrà gli indirizzi delle sottoreti e tutti i parametri ad esse associati. La prima rete della lista è la rete da dividere.
+#10     --> A.B.C.D/28
+BaseAddres:     10.100.30.0/28
+BroadCast:      10.100.30.15
+Getaway:        10.100.30.14
+Primo IP:       10.100.30.1
+Ultimo IP:      10.100.30.13
+Net Mask:       255.255.255.240
+Wildcard:       0.0.0.15
 
-#### Esempio:
-```txt
-BaseAddres:	10.100.30.0/24
-BroadCast:	10.100.30.255
-Getaway:	10.100.30.254
-Primo IP:	10.100.30.1
-Ultimo IP:	10.100.30.253
-Net Mask:	255.255.255.0
-Wildcard:	0.0.0.255
+#30     --> A.B.C.D/27
+BaseAddres:     10.100.30.32/27
+BroadCast:      10.100.30.63
+Getaway:        10.100.30.62
+Primo IP:       10.100.30.33
+Ultimo IP:      10.100.30.61
+Net Mask:       255.255.255.224
+Wildcard:       0.0.0.31
 
-#10	--> x.x.x.x/28
-BaseAddres:	10.100.30.0/28
-BroadCast:	10.100.30.15
-Getaway:	10.100.30.14
-Primo IP:	10.100.30.1
-Ultimo IP:	10.100.30.13
-Net Mask:	255.255.255.240
-Wildcard:	0.0.0.15
+16      --> A.B.C.D/16
+Spazio insufficiente per questa rete
 
-27	--> x.x.x.x/27
-BaseAddres:	10.100.30.32/27
-BroadCast:	10.100.30.63
-Getaway:	10.100.30.62
-Primo IP:	10.100.30.33
-Ultimo IP:	10.100.30.61
-Net Mask:	255.255.255.224
-Wildcard:	0.0.0.31
+-3      --> A.B.C.D/29
+BaseAddres:     10.100.30.16/29
+BroadCast:      10.100.30.23
+Getaway:        10.100.30.22
+Primo IP:       10.100.30.17
+Ultimo IP:      10.100.30.21
+Net Mask:       255.255.255.248
+Wildcard:       0.0.0.7
 
--3	--> x.x.x.x/29
-BaseAddres:	10.100.30.16/29
-BroadCast:	10.100.30.23
-Getaway:	10.100.30.22
-Primo IP:	10.100.30.17
-Ultimo IP:	10.100.30.21
-Net Mask:	255.255.255.248
-Wildcard:	0.0.0.7
+30      --> A.B.C.D/30
+BaseAddres:     10.100.30.24/30
+BroadCast:      10.100.30.27
+Getaway:        -
+Primo IP:       10.100.30.25
+Secondo IP:     10.100.30.26
+Net Mask:       255.255.255.252
+Wildcard:       0.0.0.3
 
-#5	--> x.x.x.x/29
-BaseAddres:	10.100.30.24/29
-BroadCast:	10.100.30.31
-Getaway:	10.100.30.30
-Primo IP:	10.100.30.25
-Ultimo IP:	10.100.30.29
-Net Mask:	255.255.255.248
-Wildcard:	0.0.0.7
+Spazzi Rimanenti:
+10.100.30.64/26
+10.100.30.128/25
+10.100.30.28/30
+
 ```

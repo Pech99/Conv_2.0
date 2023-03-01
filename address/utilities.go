@@ -47,6 +47,9 @@ func GetMask(Mask string) (uint32, error) {
 	var mask uint32
 
 	Mask = strings.TrimSpace(Mask)
+	if Mask == "" {
+		return 0, nil
+	}
 
 	if Mask[0] == '#' {
 		dim, err := strconv.Atoi(Mask[1:])
@@ -123,7 +126,7 @@ func getSbnetMask(n uint32) uint32 {
 // calcola la dimansione minima della rete contenente il numero n di indirizzi
 func getMinDim(n uint32) uint32 {
 	var dim uint32 = 0
-	n--
+	n++
 
 	for {
 		n = n >> 1

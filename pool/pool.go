@@ -39,11 +39,15 @@ func (this AddrPool) Get(mask uint32) (address.InetAddress, AddrPool) {
 	Addr = this[i]
 	this = this.remove(i)
 
-	if Addr.HasMinSpace(mask) {
-		return Addr, this
-	}
-
 	return this.split(Addr, mask)
+}
+
+func (this AddrPool) ToString() string {
+	var s string = ""
+	for _, e := range this {
+		s += e.ToString() + "\n"
+	}
+	return s
 }
 
 // rompe una rete più grande in sottoreti più piccole

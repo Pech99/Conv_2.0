@@ -13,61 +13,62 @@ import (
 
 func main() {
 
-	var out string
-
-	if len(os.Args) != 2 {
+	if len(os.Args) < 2 {
+		fmt.Println(help() + "\nInserire almeno l'indirizzo base nella forma A.B.C.D/M")
 		return
 	}
 
-	c, err := os.ReadFile(os.Args[1])
+	if strings.Count(os.Args[1], "help") > 0 {
+		fmt.Println(help())
+		return
+	}
+
+	add, err := address.New(os.Args[1])
 	if err != nil {
+		fmt.Println(help(), "\n", err)
 		return
 	}
+	fmt.Print("Indirizzo Base della Rete (", os.Args[1], ")", add.Info(), "\n\n")
 
-	s := strings.TrimSpace(string(c))
-	cnt := strings.Split(string(s), "\n")
-
-	add, err := address.New(cnt[0])
-	if err != nil {
-		write(fmt.Sprint(err, "\n\n"))
+	if len(os.Args) <= 2 {
 		return
 	}
-	out += add.Info() + "\n\n"
 
 	pool := pool.New(add)
-
-	for _, e := range cnt[1:] {
-
-		e = strings.TrimSpace(e)
-		if e == "" {
-			continue
-		}
+	for _, e := range os.Args[2:] {
 
 		mask, err := address.GetMask(e)
 		if err != nil {
-			out += fmt.Sprint(err, "\n\n")
+			fmt.Print(e, "\t--> A.B.C.D/M\n", err, "\n\n")
+			continue
+		} else if mask == 0 {
 			continue
 		}
 
 		if pool.IsEmpty() {
-			out += "fine dello spazio\n\n"
+			fmt.Print("Fine dello Spazio\n\n")
 			break
 		}
 
 		add, pool = pool.Get(mask)
-		inf := add.Info()
-		out += fmt.Sprint(e, "\t--> x.x.x.x/", mask, inf, "\n\n")
+		if add == 0 {
+			fmt.Print(e, "\t--> A.B.C.D/", mask, "\nSpazio insufficiente per questa rete\n\n")
+			continue
+		}
+
+		fmt.Print(e, "\t--> A.B.C.D/", mask, add.Info(), "\n\n")
 	}
 
-	write(out)
-
+	if !pool.IsEmpty() {
+		fmt.Println("Spazzi Rimanenti:\n" + pool.ToString())
+	}
 }
 
-func write(out string) error {
-	f, err := os.Create("a.txt")
-	if err != nil {
-		return err
-	}
-	f.Write([]byte(out))
-	return nil
+func help() string {
+	return "Restituisce informazioni riguardo ad un indirizzo di rete ed opera il subnetting.\n\n" +
+		"conv A.B.C.D/M [M | -M | #M]...\n\n" +
+		"A.B.C.D/M\tIndirizzo base della rete (o un indirizzo contenuto in essa) nel formato CIDR.\n" +
+		"M\t\tNumero di bit dedicati all'netID.\n" +
+		"-M\t\tNumero di bit dedicati all'hostID.\n" +
+		"#M\t\tNumero di indirizzi minimo che la rete deve contenere (compreso il Getaway).\n"
 }
