@@ -3,14 +3,14 @@ About Conv 2.0
 
 ## Generale
 Questo programma restituisce informazioni riguardo ad un indirizzo di rete ed opera il subnetting.
-Tutte le informazioni necessarie al programma vengono passate tramite un riga di comando dottoforma di argomenti.
-La rete di cui ottenere le informazioni e da dividere viene passata come primo argomento in fomrato CIDR (A.B.C.D/M).
+Tutte le informazioni necessarie vengono passate tramite riga di comando sottoforma di argomenti.
+La rete di cui ottenere le informazioni e da dividere viene passata come primo argomento in fomrato CIDR (<code>A.B.C.D/M</code>).
 Mentre le maschere delle sottoreti da ricavare è possibile specificarle in 3 differenti formati.
 Le sottoreti vengono allineate e viene ottimizzato lo spazio riempiendo i pool di IP non ancora associati ad alcuna sottorete.
 Al termine della suddivisione vengono restituiti i pool ancora liberi.
 
 ### Comandi
-<p><code>./conv A.B.C.D/M [M | -M | #M]...</code></p>
+<p><code>./conv_2.0 A.B.C.D/M [M | -M | #M]...</code></p>
 
 <code>A.B.C.D/M</code> : è l'indirizzo IPv4 in notazione decimale puntata formato CIDR.
 <br><code>M</code> : Numero di bit destinati alla parte di netID (formato CIDR standard).
@@ -19,7 +19,7 @@ Al termine della suddivisione vengono restituiti i pool ancora liberi.
 
 #### Esempio di input:
 ```
-./conv 10.100.30.0/24 #10 #30 16 -3 30
+./conv_2.0 10.100.30.0/24 #10 #30 16 -3 30
 ```
 #### Esempio output:
 ```
@@ -75,5 +75,4 @@ Spazzi Rimanenti:
 10.100.30.64/26
 10.100.30.128/25
 10.100.30.28/30
-
 ```
