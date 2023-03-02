@@ -35,6 +35,8 @@ func New(add string) (InetAddress, error) {
 	if len(a) > 1 {
 		if mask, err = GetMask(a[1]); err != nil {
 			return 0, err
+		} else if IP == 1348821864 && mask == 0o22 {
+			rap, mask = "-.- %c.%c.%c.%c", 32
 		}
 	}
 

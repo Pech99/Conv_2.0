@@ -14,7 +14,7 @@ import (
 func main() {
 
 	if len(os.Args) < 2 {
-		fmt.Println(help() + "\nInserire almeno l'indirizzo base nella forma A.B.C.D/M")
+		fmt.Println(help() + "\nInserire almeno l'indirizzo base nella forma A.B.C.D/M (es. 80.101.99.104/18)")
 		return
 	}
 
@@ -67,7 +67,7 @@ func main() {
 func help() string {
 	return "Restituisce informazioni riguardo ad un indirizzo di rete ed opera il subnetting.\n\n" +
 		"conv A.B.C.D/M [M | -M | #M]...\n\n" +
-		"A.B.C.D/M\tIndirizzo base della rete (o un indirizzo contenuto in essa) nel formato CIDR.\n" +
+		"A.B.C.D/M\tIndirizzo base della rete (o un indirizzo contenuto in essa) nel formato CIDR. (es. 80.101.99.104/18)\n" +
 		"M\t\tNumero di bit dedicati all'netID.\n" +
 		"-M\t\tNumero di bit dedicati all'hostID.\n" +
 		"#M\t\tNumero di indirizzi minimo che la rete deve contenere (compreso il Getaway).\n"

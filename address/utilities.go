@@ -86,7 +86,6 @@ func toString(addr uint32) string {
 	if rap == "" {
 		randRap()
 	}
-
 	return fmt.Sprintf(rap, add[3], add[2], add[1], add[0])
 }
 
