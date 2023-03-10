@@ -60,7 +60,7 @@ func main() {
 	}
 
 	if !pool.IsEmpty() {
-		fmt.Println("Spazzi Rimanenti:\n" + pool.ToString())
+		fmt.Println("Spazi Rimanenti:\n" + pool.ToString())
 	}
 }
 
