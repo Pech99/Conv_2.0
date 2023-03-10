@@ -71,7 +71,7 @@ Secondo IP:     10.100.30.26
 Net Mask:       255.255.255.252
 Wildcard:       0.0.0.3
 
-Spazzi Rimanenti:
+Spazi Rimanenti:
 10.100.30.64/26
 10.100.30.128/25
 10.100.30.28/30
